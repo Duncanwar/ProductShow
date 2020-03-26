@@ -4,10 +4,10 @@ class Filter extends Component{
     render(){
         return(
             <form>
-                <input type="text" placeholder="search..."/>
+                <input type="text" placeholder="search..." value={this.props.filterText}/>
                 <p>
                     <label>
-                        <input text="checkbox"/> 
+                        <input type="checkbox" checked={this.props.inStockOnly}/> 
                         &nbsp;
                             Only show products in stock
                     </label>
