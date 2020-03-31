@@ -9,18 +9,19 @@ class ProductTable extends React.Component{
 
         this.state={
             sort: {
-                column: 'name',
-                direction: 'desc'
+                column: 'price',
+                direction: 'asc'
             }
         };
     }
 sortByColumnAndDirection(objectA, objectB){
-    let isDesc = this.state.sort.direction === 'desc' ? -1 : 1;
-    let [a, b] = [objectA[this.state.sort.column], objectB[this.state.column]];
+    let isDesc = this.state.sort.direction === 'desc' ? 1 : -1;
+    let [a, b] = [objectA[this.state.sort.column], objectB[this.state.sort.column]];
     if(this.state.sort.column === 'price'){
         [a, b]= [a, b].map((value) => parseFloat(value.replace(/[^\d.]/g, ''), 10));
     }
     if(a > b){
+
         return 1 * isDesc;
     }
     if(a < b){

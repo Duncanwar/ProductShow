@@ -4,7 +4,7 @@ import ProductTable from './ProductTable'
 import Filter from './Filter'
 
 var PRODUCTS={
-    '1':{id:1,category:'Music Instrumental', price:'$459.99', stocked:true , name:'clarinet'},
+    '1':{id:1,category:'Music Instrumental', price:'$459.99', stocked:true , name:'Clarinet'},
     '2':{id:2,category:'Music Instrumental', price:'$5,000', stocked:true , name:'Harpsicord'},
     '3':{id:3,category:'Music Instrumental', price:'$11,000', stocked:false , name:'Fortepiano'},
     '4':{id:4,category:'Furniture', price:'$799', stocked:true , name:'Chaise Lounge'},
@@ -16,11 +16,15 @@ var PRODUCTS={
 class Product extends Component{
     constructor(props){
         super(props);
+        this.handleFilter=this.handleFilter.bind(this);
         this.state={
             filterText:'',
             inStockOnly:false,
             products:PRODUCTS
         };
+    }
+    handleFilter(filterInput){
+        this.setState(filterInput);
     }
     render(){
         return(
@@ -28,6 +32,7 @@ class Product extends Component{
                 <Filter 
                 filterText={this.state.filterText}
                 inStockOnly={this.state.inStockOnly}
+                onFilter={this.handleFilter}
                 />
                 <ProductTable
                  products={PRODUCTS} 
